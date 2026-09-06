@@ -67,6 +67,7 @@ REST_FRAMEWORK = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "https://inventory-management-frontend-bwjp.onrender.com",
 ]
 
 ROOT_URLCONF = 'config.urls'
