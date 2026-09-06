@@ -14,7 +14,7 @@ api.interceptors.request.use(
 
     return config;
   },
-  (error) => Promise.reject(error),
+  (error) => Promise.reject(error)
 );
 
 api.interceptors.response.use(
@@ -31,9 +31,12 @@ api.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        const response = await api.post("/api/token/refresh/", {
-          refresh: localStorage.getItem("refresh"),
-        });
+        const response = await axios.post(
+          "https://inventory-management-system-oen7.onrender.com/api/token/refresh/",
+          {
+            refresh: localStorage.getItem("refresh"),
+          }
+        );
 
         const newAccess = response.data.access;
 
@@ -53,7 +56,7 @@ api.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  },
+  }
 );
 
 export default api;
